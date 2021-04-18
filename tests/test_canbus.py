@@ -1,4 +1,4 @@
-from rec_can import RECCanStatusMonitor
+from context import CanBusMonitor
 import time
 import os
 

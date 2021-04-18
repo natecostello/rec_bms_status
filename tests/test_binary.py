@@ -1,4 +1,4 @@
-from rec_binary import RECBinaryStatusMonitor
+from context import BinaryMonitor
 import time
 
 try:
