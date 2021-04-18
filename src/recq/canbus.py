@@ -54,24 +54,24 @@ class CanBusMonitor:
 
     def translateMessageAndUpdate(self, message):
         if message.arbitration_id == CHARGE_DISCHARGE_LIMITS_ID:
-            self.charge_voltage_limit = 0.1 * int.from_bytes(message.data[0:2], 'little')
-            self.charge_current_limit = 0.1 * int.from_bytes(message.data[2:4], 'little')
-            self.discharge_current_limit = 0.1 * int.from_bytes(message.data[4:6], 'little')
-            self.discharge_voltage_limit = 0.1 * int.from_bytes(message.data[6:8], 'little')
+            self.charge_voltage_limit = round(0.1 * int.from_bytes(message.data[0:2], 'little'), 1)
+            self.charge_current_limit = round(0.1 * int.from_bytes(message.data[2:4], 'little'), 1)
+            self.discharge_current_limit = round(0.1 * int.from_bytes(message.data[4:6], 'little'), 1)
+            self.discharge_voltage_limit = round(0.1 * int.from_bytes(message.data[6:8], 'little'), 1)
             
         if message.arbitration_id == SOC_SOH_ID:
             self.state_of_charge = int.from_bytes(message.data[0:2], 'little')
             self.state_of_health = int.from_bytes(message.data[2:4], 'little')
-            self.state_of_charge_hi_res = 0.01 * int.from_bytes(message.data[4:6], 'little')
+            self.state_of_charge_hi_res = round(0.01 * int.from_bytes(message.data[4:6], 'little'), 2)
                 
         if message.arbitration_id == BATTERY_VOLT_CURRENT_TEMP_ID:
-            self.battery_voltage = 0.01 * int.from_bytes(message.data[0:2], 'little')
-            self.battery_current = 0.1 * int.from_bytes(message.data[2:4], 'little')
-            self.battery_temperature = 0.1 * int.from_bytes(message.data[4:6], 'little')
+            self.battery_voltage = round(0.01 * int.from_bytes(message.data[0:2], 'little'), 2)
+            self.battery_current = round(0.1 * int.from_bytes(message.data[2:4], 'little'), 1)
+            self.battery_temperature = round(0.1 * int.from_bytes(message.data[4:6], 'little'), 1)
             
         if message.arbitration_id == MIN_MAX_CELL_VOLT_TEMP_ID:
-            self.min_cell_voltage = 0.001 * int.from_bytes(message.data[0:2], 'little')
-            self.max_cell_voltage = 0.001 * int.from_bytes(message.data[2:4], 'little')
+            self.min_cell_voltage = round(0.001 * int.from_bytes(message.data[0:2], 'little'), 3)
+            self.max_cell_voltage = round(0.001 * int.from_bytes(message.data[2:4], 'little'), 3)
             self.min_temperature = int.from_bytes(message.data[4:6], 'little')
             self.max_temperature = int.from_bytes(message.data[6:8], 'little')
             
