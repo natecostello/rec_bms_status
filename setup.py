@@ -20,7 +20,8 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    #package_dir={"": "recq"},
+    #packages=setuptools.find_packages(where="recq"),
+    packages=['recq']
     python_requires=">=3.6",
 )
