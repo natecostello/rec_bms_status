@@ -22,6 +22,6 @@ setuptools.setup(
     ],
     #package_dir={"": "recq"},
     #packages=setuptools.find_packages(where="recq"),
-    packages=['recq']
+    packages=['recq'],
     python_requires=">=3.6",
 )
