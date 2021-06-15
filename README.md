@@ -6,7 +6,7 @@ This is an expirement in packaging following [this guide](https://packaging.pyth
 
 ### Getting Started
 
-Note, this code depends a a very specific set of hardware running.  Some details can be found [here](https://github.com/natecostello/van_two_point_oh/blob/master/blog/2021-4-08/RPi-to-REC-Q-CAN-Comms.md).
+Note, this code depends a a very specific set of hardware running.  Some details can be found [here](https://github.com/natecostello/van_two_point_oh/blob/master/blog/2021-4-08/rpi-to-rec-q-can-comms.md).
 
 ```
 %python3 -m pip install git+https://github.com/natecostello/rec_bms_status.git
