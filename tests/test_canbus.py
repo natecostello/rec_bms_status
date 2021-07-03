@@ -17,5 +17,6 @@ try:
         
 except KeyboardInterrupt:
     print("closing can connection")
+    csm.stop()
     os.system("sudo /sbin/ip link set can0 down")
 

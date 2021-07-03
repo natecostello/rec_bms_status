@@ -1,4 +1,7 @@
 import can
+from can.listener import Listener
+from can.notifier import Notifier
+
 import time
 import queue
 from threading import Thread
@@ -23,7 +26,7 @@ RATED_CAPACITY =                    0x379
 #TODO: Implement Instrument
 #TODO: Add latest decyphering
 
-class CanBusMonitor:
+class CanBusMonitor(Listener):
 
     def __init__(self, interface='can0', bitrate=250000):
         self.canInterface = interface
@@ -50,10 +53,19 @@ class CanBusMonitor:
         self.warningBits = ''
         self.alarmBits = ''
 
-    def can_rx_task(self):
-        while True:
-            message = self.bus.recv()
-            self.translateMessageAndUpdate(message)
+
+    def on_message_received(self, msg):
+        """Requiremed method for Listener"""
+        self.translateMessageAndUpdate(msg)
+
+    def __call__(self, msg):
+        """method for Listener"""
+        self.on_message_received(msg)
+
+    # def can_rx_task(self):
+    #     while True:
+    #         message = self.bus.recv()
+    #         self.translateMessageAndUpdate(message)
 
 
     def translateMessageAndUpdate(self, message):
@@ -104,12 +116,18 @@ class CanBusMonitor:
     def start(self):
         
         self.bus = can.interface.Bus(channel=self.canInterface, bustype='socketcan', bitrate=self.bitrate)
+        self.notifier = Notifier(self.bus, [self])
+        # self.notifier.add_bus(self.bus)
+        # self.notifier.add_listener(self)
 
-        rx = Thread(target = self.can_rx_task)
-
-        
-        rx.daemon=True
-        rx.start()
+        # rx = Thread(target = self.can_rx_task)
+        # rx.daemon=True
+        # rx.start()
+    
+    def stop(self):
+        self.notifier.stop()
+        self.notifier.remove_listener(self)
+        self.bus.shutdown()
 
 
 
