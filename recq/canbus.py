@@ -19,6 +19,10 @@ MIN_MAX_CELL_VOLT_TEMP_ID =         0x373
 RATED_CAPACITY =                    0x379
 # Unknown =                         0x380
 
+#TODO: Refactor to use a listener
+#TODO: Implement Instrument
+#TODO: Add latest decyphering
+
 class CanBusMonitor:
 
     def __init__(self, interface='can0', bitrate=250000):
