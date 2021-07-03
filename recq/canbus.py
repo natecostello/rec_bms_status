@@ -125,8 +125,8 @@ class CanBusMonitor(Listener):
         # rx.start()
     
     def stop(self):
+        self.notifier.remove_listener(self) #this order avoids infinite recuss
         self.notifier.stop()
-        self.notifier.remove_listener(self)
         self.bus.shutdown()
 
 
