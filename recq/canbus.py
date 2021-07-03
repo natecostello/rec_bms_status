@@ -129,7 +129,7 @@ class CanBusMonitor(Listener, Instrument):
         if (name == self.name + 'Warning Bits.binary'):
             return str(self.warningBits)
         if (name == self.name + 'Alarm Bits.binary'):
-            return str(self.warningBytes)
+            return str(self.alarmBits)
 
 
     def on_message_received(self, msg):
