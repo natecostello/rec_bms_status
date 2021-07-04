@@ -80,17 +80,17 @@ class CanBusMonitor(Listener, Instrument):
             self.name + '.SOC.%',
             self.name + '.SOH.%',
             self.name + '.SOC_HR.%',
-            self.name + 'Battery Voltage.V',
-            self.name + 'Battery Current.A',
-            self.name + 'Battery Temp.C',
-            self.name + 'Min Cell Voltage.V',
-            self.name + 'Max Cell Voltage.V',
-            self.name + 'Min Temperature.C',
-            self.name + 'Max Temperature.C',
-            self.name + 'Rated Capacity.AH',
-            self.name + 'Remaining Capacity.AH',
-            self.name + 'Warning Bits.binary',
-            self.name + 'Alarm Bits.binary']
+            self.name + '.Battery Voltage.V',
+            self.name + '.Battery Current.A',
+            self.name + '.Battery Temp.C',
+            self.name + '.Min Cell Voltage.V',
+            self.name + '.Max Cell Voltage.V',
+            self.name + '.Min Temperature.C',
+            self.name + '.Max Temperature.C',
+            self.name + '.Rated Capacity.AH',
+            self.name + '.Remaining Capacity.AH',
+            self.name + '.Warning Bits.binary',
+            self.name + '.Alarm Bits.binary']
     
     def getmeasurement(self, name: str) -> str:
         """Required for Instrument"""
@@ -108,27 +108,27 @@ class CanBusMonitor(Listener, Instrument):
             return str(self.state_of_health)
         if (name == self.name + '.SOC_HR.%'):
             return str(self.state_of_charge_hi_res)
-        if (name == self.name + 'Battery Voltage.V'):
+        if (name == self.name + '.Battery Voltage.V'):
             return str(self.battery_voltage)
-        if (name == self.name + 'Battery Current.A'):
+        if (name == self.name + '.Battery Current.A'):
             return str(self.battery_current)
-        if (name == self.name + 'Battery Temp.C'):
+        if (name == self.name + '.Battery Temp.C'):
             return str(self.battery_temperature)
-        if (name == self.name + 'Min Cell Voltage.V'):
+        if (name == self.name + '.Min Cell Voltage.V'):
             return str(self.min_cell_voltage)
-        if (name == self.name + 'Max Cell Voltage.V'):
+        if (name == self.name + '.Max Cell Voltage.V'):
             return str(self.max_cell_voltage)
-        if (name == self.name + 'Min Temperature.C'):
+        if (name == self.name + '.Min Temperature.C'):
             return str(self.min_temperature)
-        if (name == self.name + 'Max Temperature.C'):
+        if (name == self.name + '.Max Temperature.C'):
             return str(self.max_temperature)
-        if (name == self.name + 'Rated Capacity.AH'):
+        if (name == self.name + '.Rated Capacity.AH'):
             return str(self.rated_capacity)
-        if (name == self.name + 'Remaining Capacity.AH'):
+        if (name == self.name + '.Remaining Capacity.AH'):
             return str(self.remaining_capacity)
-        if (name == self.name + 'Warning Bits.binary'):
+        if (name == self.name + '.Warning Bits.binary'):
             return str(self.warningBits)
-        if (name == self.name + 'Alarm Bits.binary'):
+        if (name == self.name + '.Alarm Bits.binary'):
             return str(self.alarmBits)
 
 
