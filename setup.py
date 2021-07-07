@@ -27,5 +27,5 @@ setuptools.setup(
     install_requires=[
         "python-can",
         "gpiozero",
-        "instrument_logger @ git+https://github.com/natecostello/instrument_logger.git"]
+        "instrument_logger-NSC @ git+https://github.com/natecostello/instrument_logger.git"]
 )
