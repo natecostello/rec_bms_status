@@ -1,6 +1,4 @@
-import can
 from can.listener import Listener
-from can.notifier import Notifier
 from instrument_logger import Instrument
 
 import time
@@ -30,9 +28,10 @@ KELVN_TO_C = 273 # rounded
 
 class CanBusMonitor(Listener, Instrument):
 
-    def __init__(self, interface='can0', bitrate=250000):
-        self.canInterface = interface
-        self.bitrate = bitrate
+    def __init__(self):
+    # def __init__(self, interface='can0', bitrate=250000):
+        # self.canInterface = interface
+        # self.bitrate = bitrate
 
         self.charge_voltage_limit = 0
         self.charge_current_limit = 0
@@ -191,21 +190,21 @@ class CanBusMonitor(Listener, Instrument):
             self.warningBits = bits[:-1]
 
             
-    def start(self):
+    # def start(self):
         
-        self.bus = can.interface.Bus(channel=self.canInterface, bustype='socketcan', bitrate=self.bitrate)
-        self.notifier = Notifier(self.bus, [self])
-        # self.notifier.add_bus(self.bus)
-        # self.notifier.add_listener(self)
+    #     self.bus = can.interface.Bus(channel=self.canInterface, bustype='socketcan', bitrate=self.bitrate)
+    #     self.notifier = Notifier(self.bus, [self])
+    #     # self.notifier.add_bus(self.bus)
+    #     # self.notifier.add_listener(self)
 
-        # rx = Thread(target = self.can_rx_task)
-        # rx.daemon=True
-        # rx.start()
+    #     # rx = Thread(target = self.can_rx_task)
+    #     # rx.daemon=True
+    #     # rx.start()
     
-    def stop(self):
-        self.notifier.remove_listener(self) #this order avoids infinite recuss
-        self.notifier.stop()
-        self.bus.shutdown()
+    # def stop(self):
+    #     self.notifier.remove_listener(self) #this order avoids infinite recuss
+    #     self.notifier.stop()
+    #     self.bus.shutdown()
 
 
 
