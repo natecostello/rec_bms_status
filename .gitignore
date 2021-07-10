@@ -2,6 +2,7 @@
 __pycache__/*
 recq/__pycache__/
 test/__pycache__/
+*.csv
 
 
 # Byte-compiled / optimized / DLL files

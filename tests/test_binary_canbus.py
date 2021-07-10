@@ -11,6 +11,7 @@ os.system("sudo /sbin/ip link set can0 up type can bitrate 250000")
 
 
 try:
+    print("initializing insturments and logger")
     csm = CanBusMonitor()
     bus = can.interface.Bus(channel='can0', bustype='socketcan', bitrate=250000)         
     notifier = Notifier(bus, [csm])
@@ -22,6 +23,7 @@ try:
     logger.addinstrument(bsm)
     logger.addinstrument(csm)
     
+    print("logging for 60 seconds")
     sleep(3)
     logger.start()
     sleep(60)
