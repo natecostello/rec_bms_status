@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="recq-NSC",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Nate Costello",
     author_email="natecostello@gmail.com",
     description="A package that collects information from the REC Q Battery Management System",
