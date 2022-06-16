@@ -155,7 +155,7 @@ class CanBusMonitor(Listener, Instrument):
                 
         if message.arbitration_id == BATTERY_VOLT_CURRENT_TEMP_ID:
             self.battery_voltage = round(0.01 * int.from_bytes(message.data[0:2], 'little'), 2)
-            self.battery_current = round(0.1 * int.from_bytes(message.data[2:4], 'little'), 1)
+            self.battery_current = round(0.1 * int.from_bytes(message.data[2:4], 'little', signed=True), 1)
             self.battery_temperature = round(0.1 * int.from_bytes(message.data[4:6], 'little'), 1)
             
         if message.arbitration_id == MIN_MAX_CELL_VOLT_TEMP_ID:
